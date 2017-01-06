@@ -8,6 +8,13 @@ use Bricks\Business\Currency\Exception\CannotGetRateException;
  */
 interface ConverterInterface{
   /**
+   * @param CurrencyInterface $currency Проверяемая валюта.
+   *
+   * @return bool true - если курс для данной валюты известен.
+   */
+  public function hasRate(CurrencyInterface $currency);
+
+  /**
    * @param CurrencyInterface $currencyFrom Исходная валюта.
    * @param CurrencyInterface $currencyTo Целевая валюта.
    *

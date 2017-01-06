@@ -54,6 +54,13 @@ class Converter implements ConverterInterface{
   /**
    * {@inheritdoc}
    */
+  public function hasRate(CurrencyInterface $currency){
+    return isset($this->rates[$currency->getCharCode()]);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getRate(CurrencyInterface $currencyFrom, CurrencyInterface $currencyTo){
     if(!isset($this->rates[$currencyFrom->getCharCode()])){
       throw new CannotGetRateException(sprintf('Rate for "%s" not found.', $currencyFrom->getCharCode()));

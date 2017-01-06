@@ -43,6 +43,14 @@ class ConverterTest extends \PHPUnit_Framework_TestCase{
     $converter->addRate($baseCurrency, 2);
   }
 
+  public function testHasRate(){
+    $baseCurrency = new Currency('USD');
+    $converter = new Converter($baseCurrency);
+
+    $this->assertTrue($converter->hasRate($baseCurrency));
+    $this->assertFalse($converter->hasRate(new Currency('RUR')));
+  }
+
   public function testGetRate(){
     $baseCurrency = new Currency('USD');
     $converter = new Converter($baseCurrency);
